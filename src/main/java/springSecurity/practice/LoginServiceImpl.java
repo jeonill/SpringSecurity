@@ -32,19 +32,6 @@ public class LoginServiceImpl implements UserDetailsService, LoginService {
     }
 
     @Override
-    public int LoginCheck(String loginId, String loginPassword) {
-
-        try {
-            UserDetails userDetails = loadUserByUsername(loginId);
-            String password = userDetails.getPassword();
-            passwordEncoder.matches(loginPassword, password);
-        } catch (Exception e) {
-            return 0;
-        }
-        return 1;
-    }
-
-    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         LoginVO result = loginRepository.findByLoginId(username);
 
